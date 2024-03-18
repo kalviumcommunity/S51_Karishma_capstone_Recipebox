@@ -4,7 +4,7 @@
 }
 .navbar {
     background-color: #690b0b;
-    color: #fff;
+    color: #000000;
     display: flex;
     padding: 15px;
     justify-content: space-between;
@@ -61,6 +61,20 @@
   
   
   .search-bar button:hover {
-    background-color: #45a049;
+    background-color: rgb(223, 153, 23);
   }
   
+  .login-btn {
+    padding: 10px 20px;
+    background-color: #bc8724;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: rgb(223, 153, 23);
+  }
