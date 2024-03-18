@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navbar.css'; 
+import './Navbar.css';
+import LoginPopup from './LoginPopup';
 
 function Navbar() {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLoginButtonClick = () => {
+    setShowLogin(true);
+  };
+
+  const handleCloseLogin = () => {
+    setShowLogin(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="logo">
-        <NavLink  to="/">Recipe Box</NavLink>
+        <NavLink to="/">Recipe Box</NavLink>
       </div>
       
       <div className="search-bar">
@@ -14,10 +25,11 @@ function Navbar() {
         <button>Search</button>
       </div>
       <ul className="nav-links">
-        <li><NavLink  to="/" className="active">Home</NavLink></li>
+        <li><NavLink to="/" className="active">Home</NavLink></li>
         <li><NavLink to="/about" className="active">About</NavLink></li>
-        <li><NavLink to="/signin" className="active">Log-In</NavLink></li>
+        <li><button className="login-btn" onClick={handleLoginButtonClick}>Log-In</button></li>
       </ul>
+      {showLogin && <LoginPopup onClose={handleCloseLogin} />}
     </nav>
   );
 }
