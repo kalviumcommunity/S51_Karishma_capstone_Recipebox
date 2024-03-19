@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './LoginPopup.css';
 
 function LoginPopup({ onClose }) {
@@ -9,7 +10,7 @@ function LoginPopup({ onClose }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
+
     if (!username.includes('@') || !username.endsWith('.com')) {
       setUsernameError('Username must contain @ and end with .com');
       return;
@@ -23,25 +24,27 @@ function LoginPopup({ onClose }) {
     onClose();
   };
 
-  const canClose = username.trim() !== '' && password.trim() !== '';
+  const canClose = true; // Close button should always work
+  const canLogin = username.trim() !== '' && password.trim() !== ''; // Only enable login button if both fields are filled
 
   return (
     <div className="login">
       <div className="content">
-        {!canClose && <p className="message">Please fill out the form before closing.</p>}
-        <span className={`close ${canClose ? '' : 'disabled'}`} onClick={canClose ? onClose : undefined}>&times;</span>
+        
+        <span className={`close ${canClose ? '' : 'disabled'}`} onClick={onClose}>&times;</span>
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
           {usernameError && <p className="error">{usernameError}</p>}
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           {passwordError && <p className="error">{passwordError}</p>}
-          <button type="submit">Login</button>
+          <button type="submit" disabled={!canLogin}>Login</button>
         </form>
-        <p>Don't have an account? <a href="/signup">Create one for your own.</a></p>
+        <p>Don't have an account? <Link to="/signup">Create one for your own.</Link></p>
       </div>
     </div>
   );
 }
 
 export default LoginPopup;
+
