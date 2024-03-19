@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SignUp.css'; // Import the CSS file
+import './SignUp.css'; 
 
 function SignUp() {
   const [username, setUsername] = useState('');
@@ -43,12 +43,12 @@ function SignUp() {
 
   const handleInputChange = (e, setInput, setError) => {
     setInput(e.target.value);
-    setError(''); // Clear any previous error
+    setError(''); 
   };
 
   return (
     <div id="SignUp" className="signup">
-      <div className="content">
+      <div className="details">
         <span className="close" id='Close_button' onClick={onClose}>&times;</span>
         <h2>Sign Up</h2>
         <form onSubmit={handleSignUp}>
