@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
 import LoginPopup from './LoginPopup';
+import logo from '../assets/logo.png'
 
 function Navbar() {
   const [showLogin, setShowLogin] = useState(false);
@@ -17,7 +18,8 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <NavLink to="/">Recipe Box</NavLink>
+        <img id="logo"src={logo}></img>
+        <NavLink className="title" to="/"> Recipe Box</NavLink>
       </div>
       
       <div className="search-bar">
