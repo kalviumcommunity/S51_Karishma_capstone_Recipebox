@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom'; 
 import './LoginPopup.css';
 
 function LoginPopup({ onClose }) {
@@ -24,9 +24,8 @@ function LoginPopup({ onClose }) {
     onClose();
   };
 
-  const canClose = true; // Close button should always work
-  const canLogin = username.trim() !== '' && password.trim() !== ''; // Only enable login button if both fields are filled
-
+  const canClose = true; 
+  const canLogin = username.trim() !== '' && password.trim() !== ''; 
   return (
     <div className="login">
       <div className="content">
