@@ -9,13 +9,13 @@
   display: flex;
   padding: 15px;
   justify-content: space-between;
-  align-items: center; /* Align items vertically */
-  flex-wrap: wrap; /* Allow items to wrap */
+  align-items: center; 
+  flex-wrap: wrap; 
 }
 
 .logo {
   display: flex;
-  align-items: center; /* Align logo and title vertically */
+  align-items: center; 
 }
 
 .logo a {
@@ -23,7 +23,7 @@
   text-decoration: none;
   font-size: 30px;
   font-weight: bold;
-  margin-right: 10px; /* Add some space between logo and title */
+  margin-right: 10px; 
 }
 
 .nav-links {
@@ -49,8 +49,8 @@
 
 .search-bar {
   display: flex;
-  align-items: center; /* Align items vertically */
-  margin-top: 10px; /* Add space between navbar and search bar */
+  align-items: center; 
+  margin-top: 10px; 
 }
 
 .search-bar input[type="text"] {
@@ -93,13 +93,13 @@
   font-family: 'Muli', sans-serif;
 }
 
-/* Media query for smaller screens */
+
 @media (max-width: 768px) {
   .logo {
-      margin-bottom: 10px; /* Add space below logo on smaller screens */
+      margin-bottom: 10px;
   }
   .search-bar {
-      margin-left: 0; /* Center search bar on smaller screens */
-      margin-top: 10px; /* Add space between navbar and search bar */
+      margin-left: 0;
+      margin-top: 10px; 
   }
 }
