@@ -4,7 +4,8 @@ import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
 import LoginPopup from './Components/LoginPopup';
-import SignUp from './Components/SignUp'; 
+import SignUp from './Components/SignUp';
+import Footer from './Components/Footer'; 
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<LoginPopup />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
+        <Footer /> 
       </div>
     </BrowserRouter>
   );
