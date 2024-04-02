@@ -1,3 +1,29 @@
-body{
-    background-color: antiquewhite;
-}
+.logo_web img{
+    height:70px;
+    margin-right: 10px;
+  }
+  .logo_web{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: rgb(31, 177, 31);
+  }
+  .lp_nav_main{
+    /* border: 1px solid black; */
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .features{
+    /* border: 1px solid black; */
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+  }
+  .search_profile img{
+    height: 40px;
+    margin-left: 30px;
+  }
