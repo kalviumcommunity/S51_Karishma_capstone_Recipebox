@@ -9,6 +9,7 @@ import potatoes from '../assets/potatoes.png';
 import mushroom_soup from '../assets/mushroom_soup.png';
 import pancake from '../assets/pancake.png';
 import teriyaki from '../assets/teriyaki.png';
+// import aboutus from '../assets/aboutus.png';
 
 
 function Landingpage() {
@@ -92,7 +93,9 @@ function Landingpage() {
                             </div>
                         
                     </div>
-
+                </div>
+                <div className="a_background">
+                   
                 </div>
             </div>
         </>
