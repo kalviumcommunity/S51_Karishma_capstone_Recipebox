@@ -26,13 +26,13 @@ function Landingpage() {
                         <span>Recipe Box</span>
                     </div>
                     <div className="features">
-                        <span>Home</span>
-                        <span>About Us</span>
-                        <span>Recipe</span>
+                        <span className="btn_f">Home</span>
+                        <Link style={{textDecoration:'none',color:'#000'}}to='/about'><span className="btn_f">About Us</span></Link>
+                        <span className="btn_f">Recipe</span>
                     </div>
                     <div className="search_profile">
-                        <img src={search} alt="" />
-                        <Link to='/login'><img src={user} alt="" /></Link>
+                        <img className="btn_f" src={search} alt="" />
+                        <Link style={{textDecoration:'none',color:'#000'}}to='/login'><img className="btn_f" src={user} alt="" /></Link>
                     </div>
                 </div>
 
@@ -42,7 +42,7 @@ function Landingpage() {
                         <h1 className="intro">Cooking Made Fun <br></br>and Easy: Unleash <br></br>Your Inner Chef</h1>
                         <p className="tag_line">Discover more recipes in your hand with the best recipe.<br></br>
                             Help you to find the easiest way to cook.</p>
-                        <button className="explore"><Link to='/login'>Explore Recipe</Link></button>
+                        <button className="explore"><Link style={{textDecoration:'none',color:'#fff'}}to='/login'>Explore Recipe</Link></button>
                     </div>
                     <div className="front_meal">
                         <img src={front_meal} alt="" />
@@ -98,9 +98,10 @@ function Landingpage() {
                         
                     </div>
                 </div>
-                <div className="a_background">
-                   
-                </div>
+                <Link style={{textDecoration:'none',color:'#000'}}to='/about'><div className="a_background">
+                
+                </div></Link>
+                
                 <footer>
                     <div className="f_info">
                         <div className="f_logo">
@@ -114,7 +115,7 @@ function Landingpage() {
                         <h1>Navigation</h1>
                         <ul>
                             <li>Home</li>
-                            <li>About Us</li>
+                            <li> <Link style={{textDecoration:'none',color:'#000'}} to='/about'>About Us</Link></li>
                             <li>Recipe</li>
                         </ul>
                     </div>
