@@ -19,6 +19,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: sticky;
+    top: 0%;
+    background-color: #fff;
   }
   .features{
     /* border: 1px solid black; */
@@ -180,4 +183,13 @@ ul{
 .f_social{
   justify-content: space-between;
   height: 22vh;
+}
+.btn_f{
+  background-color: none;
+}
+.btn_f:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+Link{
+  text-decoration: none;
 }
