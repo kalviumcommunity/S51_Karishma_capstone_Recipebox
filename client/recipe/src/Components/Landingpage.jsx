@@ -11,6 +11,7 @@ import pancake from '../assets/pancake.png';
 import teriyaki from '../assets/teriyaki.png';
 import facebook from '../assets/facebook.png';
 import ig from '../assets/ig.png';
+import { useNavigate, Link } from "react-router-dom";
 
 // import aboutus from '../assets/aboutus.png';
 
@@ -31,7 +32,7 @@ function Landingpage() {
                     </div>
                     <div className="search_profile">
                         <img src={search} alt="" />
-                        <img src={user} alt="" />
+                        <Link to='/login'><img src={user} alt="" /></Link>
                     </div>
                 </div>
 
@@ -41,7 +42,7 @@ function Landingpage() {
                         <h1 className="intro">Cooking Made Fun <br></br>and Easy: Unleash <br></br>Your Inner Chef</h1>
                         <p className="tag_line">Discover more recipes in your hand with the best recipe.<br></br>
                             Help you to find the easiest way to cook.</p>
-                        <button className="explore">Explore Recipe</button>
+                        <button className="explore"><Link to='/login'>Explore Recipe</Link></button>
                     </div>
                     <div className="front_meal">
                         <img src={front_meal} alt="" />

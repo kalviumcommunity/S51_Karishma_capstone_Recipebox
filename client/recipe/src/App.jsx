@@ -9,18 +9,17 @@ import Landingpage from './Components/Landingpage';
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <div className="App">
-    //     <Navbar />
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/about" element={<About />} />
-    //       <Route path="/login" element={<LoginPopup />} />
-    //       <Route path="/signup" element={<SignUp />} />
-    //     </Routes>
-    //   </div>
-    // </BrowserRouter>
-    < Landingpage/>
+    <BrowserRouter>
+      <div className="App">
+        {/* <Navbar /> */}
+        <Routes>
+          <Route path="/" element={<Landingpage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<LoginPopup />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
 
   );
 }
