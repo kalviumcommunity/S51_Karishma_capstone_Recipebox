@@ -9,6 +9,9 @@ import potatoes from '../assets/potatoes.png';
 import mushroom_soup from '../assets/mushroom_soup.png';
 import pancake from '../assets/pancake.png';
 import teriyaki from '../assets/teriyaki.png';
+import facebook from '../assets/facebook.png';
+import ig from '../assets/ig.png';
+
 // import aboutus from '../assets/aboutus.png';
 
 
@@ -97,6 +100,31 @@ function Landingpage() {
                 <div className="a_background">
                    
                 </div>
+                <footer>
+                    <div className="f_info">
+                        <div className="f_logo">
+                            <img className="f_img"src={logo} alt="logo" />
+                            <h1>Recipe Box</h1>
+                        </div>
+                        <p className="f_para">Recipe Box is a recipe website with a wide variety of <br />delicious recipes, 
+                        easy-to-use search function. Join our<br /> community and let's cook together!</p>
+                    </div>
+                    <div className="f_nav">
+                        <h1>Navigation</h1>
+                        <ul>
+                            <li>Home</li>
+                            <li>About Us</li>
+                            <li>Recipe</li>
+                        </ul>
+                    </div>
+                    <div className="f_social">
+                        <h1>Follow Us</h1>
+                        <img className="f_icon" src={facebook} alt="facebook" />
+                        <img className="f_icon" src={ig} alt="ig" />
+
+
+                    </div>
+                </footer>
             </div>
         </>
     )

@@ -135,3 +135,49 @@
     background-size: cover;
     height: 80vh;
   }
+
+
+  footer{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+    height: 40vh;
+  }
+
+.f_img{
+  width: 6vw;
+}
+.f_logo{
+  display: flex;
+  align-items: center;
+}
+
+.f_para{
+  color: gray;
+  margin-top: 2%;
+}
+
+li{
+  list-style: none;
+  font-size: large;
+}
+.f_nav,.f_social{
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ul{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 20vh;
+  margin-top: 5%;
+}
+.f_icon{
+  width: 3vw;
+}
+.f_social{
+  justify-content: space-between;
+  height: 22vh;
+}
