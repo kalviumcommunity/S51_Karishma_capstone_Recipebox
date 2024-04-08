@@ -170,7 +170,7 @@ li{
   flex-direction: column;
   align-items: center;
 }
-ul{
+.nav_l{
   display: flex;
   justify-content: space-between;
   flex-direction: column;
