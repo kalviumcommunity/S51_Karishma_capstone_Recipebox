@@ -1,39 +1,38 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
-import LoginPopup from './LoginPopup';
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.png';
+import search from '../assets/search.png';
+import arrow from '../assets/arrow.png';
 
-function Navbar() {
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleLoginButtonClick = () => {
-    setShowLogin(true);
-  };
-
-  const handleCloseLogin = () => {
-    setShowLogin(false);
-  };
+function App() {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
 
   return (
-    <nav className="navbar">
-      <div className="logo">
-        <img id="logo"src={logo}></img>
-        <NavLink className="title" to="/"> Recipe Box</NavLink>
-      </div>
-      
-      <div className="search-bar">
-        <input type="text" placeholder="Search recipes..." />
-        <button>Search</button>
-      </div>
-      <ul className="nav-links">
-        <li><NavLink to="/" className="active">Home</NavLink></li>
-        <li><NavLink to="/about" className="active">About</NavLink></li>
-        <li><button className="login-btn" onClick={handleLoginButtonClick}>Log-In</button></li>
-      </ul>
-      {showLogin && <LoginPopup onClose={handleCloseLogin} />}
-    </nav>
+    <>
+      <nav className="navbar">
+        <Link to='/Home'>
+        <div className={`logo_web ${click ? 'hidden' : ''} link`}>
+          <img src={logo} alt="Recipe Box" className='link'/>
+          <span className='link' style={{textDecoration:'none'}}>Recipe Box</span>
+        </div></Link>
+        <div className={`overall-nav ${click ? 'width100' : 'width25'}`}>
+          <div className={`menu ${click ? 'hidden' : ''}`} id="menu">
+            <ul className={`menu-inner ${click ? 'hidden' : ''}`}>
+              <li className={`menu-item ${click ? 'hidden' : ''} `} ><Link to='/Home' className='link'>Home</Link></li>
+              <li className={`menu-item ${click ? 'hidden' : ''} link`}><Link to='/Recipes' className='link'>Recipes</Link></li>
+            </ul>
+          </div>
+          <div className="search-box">
+          <img src={arrow} onClick={()=>{setClick(!click)}} className={`exit ${click ? 'active' : ''}`} alt="" />
+            <img onClick={handleClick} className={`btn-search ${click ? 'hidden' : ''}`} src={search} alt="Search" />
+            <input id="search-bar" type="search" name="search" className={`input-search ${click ? 'active' : ''}`} placeholder="Search here..." /> 
+          </div>
+        </div>
+      </nav>
+    </>
   );
 }
 
-export default Navbar;
+export default App;

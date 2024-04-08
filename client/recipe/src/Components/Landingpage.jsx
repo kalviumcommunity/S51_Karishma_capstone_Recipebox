@@ -113,7 +113,7 @@ function Landingpage() {
                     </div>
                     <div className="f_nav">
                         <h1>Navigation</h1>
-                        <ul>
+                        <ul className="nav_l">
                             <li>Home</li>
                             <li> <Link style={{textDecoration:'none',color:'#000'}} to='/about'>About Us</Link></li>
                             <li>Recipe</li>
