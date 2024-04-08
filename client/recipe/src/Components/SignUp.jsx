@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 import './SignUp.css'; 
+import axios from "axios"
 
 function SignUp() {
   const [username, setUsername] = useState('');
@@ -10,19 +11,21 @@ function SignUp() {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [close,setclose]=useState(false)
-
-  const onClose =()=>{
-    setclose(!close);
-    if (close === true){
-      document.getElementById("SignUp").style.display="none"
-    }else{
-      document.getElementById("SignUp").style.display="block"
-    }
-  }
+  function getCookie(name) {
+    let cookieArray = document.cookie.split('; ');
+    let cookie = cookieArray.find((row) => row.startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : null;
+}
+function setCookie(name, value, daysToExpire) {
+    let date = new Date();
+    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
+const navigate = useNavigate();
   const handleSignUp = (e) => {
     e.preventDefault();
-
-    if (!username.includes('@') || !username.endsWith('.com')) {
+ 
+    if (!username.includes('@') ) {
       setUsernameError('Username must contain @ and end with .com');
       return;
     }
@@ -36,9 +39,15 @@ function SignUp() {
       setConfirmPasswordError('Passwords do not match');
       return;
     }
-
+            axios.post('https://s51-ipl-team.onrender.com/signup',{
+                name:username,
+                password:password
+            }).then((response)=>{
+            setCookie('token', response.data.accessToken,365);
+            setCookie('username', username,365);
+        navigate('/Home')}).catch((error)=>{console.error(error)});
     console.log('Signing up with:', username, password);
-    onClose(); 
+
   };
 
   const handleInputChange = (e, setInput, setError) => {
@@ -49,7 +58,7 @@ function SignUp() {
   return (
     <div id="SignUp" className="signup">
       <div className="details">
-        <span className="close" id='Close_button' onClick={onClose}>&times;</span>
+        <span className="close" id='Close_button' >&times;</span>
         <h2>Sign Up</h2>
         <form onSubmit={handleSignUp}>
           <input type="text" placeholder="Username" value={username} onChange={(e) => handleInputChange(e, setUsername, setUsernameError)} />
