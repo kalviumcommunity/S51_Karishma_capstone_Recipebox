@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import { Link ,useNavigate} from 'react-router-dom'; 
 import './LoginPopup.css';
 import axios from "axios"
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import auth from './Fire.config'
+import googleimg from "../assets/google.png"
 
 function LoginPopup() {
+
+
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -40,7 +46,17 @@ function LoginPopup() {
         navigate('/Home')}).catch((error)=>{console.error(error)});
     console.log('Logging in with:', username, password);
   };
-
+  const google = async (e) => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log(result);
+      navigate('/Home'); setCookie('logedin','True',365)
+      setCookie("username",result.user.displayName,365);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
   const canClose = true; 
   const canLogin = username.trim() !== '' && password.trim() !== ''; 
   return (
@@ -56,6 +72,7 @@ function LoginPopup() {
           {passwordError && <p className="error">{passwordError}</p>}
           <button type="submit" disabled={!canLogin}>Login</button>
         </form>
+        <img className='g_icon' src={googleimg} onClick={google} alt="google icon" />
         <p>Don't have an account? <Link to="/signup">Create one for your own.</Link></p>
       </div>
     </div>
