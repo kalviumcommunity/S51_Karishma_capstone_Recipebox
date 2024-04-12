@@ -5,10 +5,14 @@ import logo from '../assets/logo.png';
 import search from '../assets/search.png';
 import arrow from '../assets/arrow.png';
 
-function App() {
+function App({onChange}) {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-
+  const [inputValue,setInputValue]= useState(null)
+  const setInput=(e)=>{
+    setInputValue(e.target.value)
+    onChange(e.target.value)
+  }
   return (
     <>
       <nav className="navbar">
@@ -27,7 +31,7 @@ function App() {
           <div className="search-box">
           <img src={arrow} onClick={()=>{setClick(!click)}} className={`exit ${click ? 'active' : ''}`} alt="" />
             <img onClick={handleClick} className={`btn-search ${click ? 'hidden' : ''}`} src={search} alt="Search" />
-            <input id="search-bar" type="search" name="search" className={`input-search ${click ? 'active' : ''}`} placeholder="Search here..." /> 
+            <input onChange={setInput} id="search-bar" type="search" name="search" className={`input-search ${click ? 'active' : ''}`} placeholder="Search here..." /> 
           </div>
         </div>
       </nav>
