@@ -17,6 +17,11 @@ import { useNavigate, Link } from "react-router-dom";
 
 
 function Landingpage() {
+    function getCookie(name) {
+        let cookieArray = document.cookie.split('; ');
+        let cookie = cookieArray.find((row) => row.startsWith(name + '='));
+        return cookie ? cookie.split('=')[1] : null;
+    }
     return (
         <>
             <div className="landing_container">
@@ -26,7 +31,16 @@ function Landingpage() {
                         <span>Recipe Box</span>
                     </div>
                     <div className="features">
-                        <span className="btn_f">Home</span>
+                        
+                        {
+                            (getCookie('username')!=undefined) ?
+                                <>
+                                <Link to="/home"><span className="btn_f">Home</span></Link>
+                                </>
+                            
+                              :
+                              <Link style={{textDecoration:'none',color:'#000'}}to='/login'><span className="btn_f">Home</span></Link>
+                        }
                         <Link style={{textDecoration:'none',color:'#000'}}to='/about'><span className="btn_f">About Us</span></Link>
                         <span className="btn_f">Recipe</span>
                     </div>
@@ -52,7 +66,15 @@ function Landingpage() {
                     <div className="heading">
                         <h1 className="ways">Discover, Create, Share</h1>
                         
-                        <button className="see_all">See All</button>
+                        {
+                            (getCookie('username')!=undefined) ?
+                                <>
+                                <Link className="see_all" to="/home">See All</Link>
+                                </>
+                            
+                              :
+                              <Link style={{textDecoration:'none',color:'#000'}} className="see_all"to='/login'>See All</Link>
+                        }
                     </div>
                     <div>
                     <p className="popular">Check our most popular recipes of this week</p>
