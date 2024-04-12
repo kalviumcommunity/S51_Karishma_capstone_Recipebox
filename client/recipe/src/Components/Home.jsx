@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import './Home.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
@@ -16,12 +16,47 @@ import img10 from  "../assets/img/pexels-pascal-claivaz-410648.jpg";
 import img11 from  "../assets/img/pexels-vanessa-loring-5965658.jpg";
 import img12 from  "../assets/img/pexels-pixabay-416528.jpg";
 import img13 from  "../assets/img/pexels-pixabay-262945.jpg";
+import axios from 'axios';
+import './Foodcontainer.css'
+import Ellipse from "../assets/Ellipse 57.svg";
+import reviewimg1 from "../assets/unsplash_EPi3TRQc5Z0 copy.svg";
+import reviewimg2 from "../assets/unsplash_m663zRzRe40 copy.svg";
+import reviewimg3 from "../assets/unsplash_7Sz71zuuW4k.svg";
+import star from "../assets/Star 7.svg"
 
 
 function Home() {
+    const [searchValue,setSearchValue]= useState(null)
+    const [data, setData] = useState({ meals:[{strmeal:"No Recipe Found"}] }); 
+    const [state, setState] = useState({
+      loading: true,
+      error: null,
+    });
+    console.log(data.meals)
+    const searchParameter =(newState)=>{
+        setSearchValue(newState);
+        setState({ loading: false, error: "err" });
+    }
+    useEffect(() => {
+        fetchNewsData();
+      }, [searchValue]);
+    
+      const fetchNewsData = async () => {
+        try {
+          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${(searchValue==null)?'a':searchValue}`);
+          setData(response.data); 
+          console.log(data)
+          setState({ loading: false, error: null });
+          console.log(response.data);
+        } catch (err) {
+          console.error(err);
+          setState({ loading: false, error: err });
+        }
+      };
+    if(searchValue == null){
   return (
     <>
-        <Navbar></Navbar>
+        <Navbar onChange={searchParameter}></Navbar>
 
         <div id='cato'>
         <p className="menu-that-always">
@@ -103,7 +138,66 @@ function Home() {
       {/* <Footer /> */}
     </>
 
-  );
+  );}
+  else{
+   
+
+      // if (state.error) {
+      //   return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
+      //   }</div>;
+      // }
+      if (state.loading) {
+        return <div>Loading...</div>;
+      }
+      function random_wholenum(){
+        return Math.floor(Math.random() * 5)+1;
+    }
+    function random_decimalnum(){
+        return Math.floor(Math.random() * 10);
+    }
+    return(
+        <>
+        <Navbar onChange={searchParameter}></Navbar>
+        <div id='Recipe'>
+        {data.meals.length > 0 ? ( 
+              data.meals.map((meal,index)=>{
+                return (                <div className="cato-div-meal"  key={index}>
+                <div className="rectangle"></div>
+                <div className="group-2">
+                    <div className="div-cato-meal">
+                        <div className="image-review ">
+                            <img className="review-img-1" src={reviewimg1}/>
+                            <img className="review-img-2" src={reviewimg2}/>
+                            <img className="review-img-3" src={reviewimg3}/>
+                        </div>
+                    </div>
+                    <div className="group-3">
+                        <img className="star" src={star} />
+                        <div className="review-text">({random_wholenum()}.{random_decimalnum()})</div>
+                    </div>
+                </div>
+                <div className="text-meal-name">{meal.strMeal}</div>
+                {/* <div className="div-recipe">
+                    <div onclick="searchYouTubeVideos('${meal.strMeal}')" className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
+                </div> */}
+                <div className="group-4">
+                    <div className="overlap-7">
+                        <div className="group-5">
+                            <div className="overlap-8">
+                                <img className="meal-thumb-img" src={meal.strMealThumb} />
+                            </div>
+                        </div>
+                        <img className="ellipse-2" src={Ellipse} />
+                    </div>
+                </div>
+            </div>)
+              })) : (
+              <div>No recipe found.</div> 
+            )}
+          </div>
+        </>
+    )
+  }
 }
 
 export default Home;
