@@ -1,0 +1,50 @@
+.text-meal-name {
+    position: absolute;
+    top: 329px;
+    left: 50px;
+    font-family: "Sofia Pro-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #faf7f7;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: normal;
+    /* border: 1px solid white; */
+    width: 200px;
+}
+.group-4 {
+    position: absolute;
+    width: 254px;
+    height: 254px;
+    top: 0;
+    left: 28px;
+}
+
+.overlap-7 {
+    position: relative;
+    width: 248px;
+    height: 248px;
+    top: 3px;
+    left: 3px;
+}
+
+.group-5 {
+    position: absolute;
+    width: 198px;
+    height: 207px;
+    top: 26px;
+    left: 25px;
+}
+
+ .overlap-8 {
+    position: relative;
+    height: 207px;
+}
+.meal-thumb-img {
+    position: absolute;
+    width: 198px;
+    height: 198px;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}

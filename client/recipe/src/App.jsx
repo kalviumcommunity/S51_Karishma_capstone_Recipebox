@@ -7,6 +7,7 @@ import About from './Components/About';
 import LoginPopup from './Components/LoginPopup';
 import SignUp from './Components/SignUp';
 import Landingpage from './Components/Landingpage';
+import Foodcontainer from './Components/Foodcontainer';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<LoginPopup />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/recipe/:topic" element={<Foodcontainer />} />
+
         </Routes>
       </div>
     </BrowserRouter>
