@@ -110,7 +110,6 @@ body{
     cursor: pointer;
 }
 
-/* Optional: Add some spacing between items */
 .items + .items {
     margin-top: 20px;
 }
@@ -228,7 +227,6 @@ body{
     color: white;
 }
 
- /* code for astyle of catogorie divs */
 
  .overlap-wrapper {
     position: absolute;
