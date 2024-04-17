@@ -135,7 +135,7 @@ function Home() {
 
         </section>
     </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
 
   );}
@@ -177,9 +177,9 @@ function Home() {
                     </div>
                 </div>
                 <div className="text-meal-name">{meal.strMeal}</div>
-                {/* <div className="div-recipe">
+                <div className="div-recipe">
                     <div onclick="searchYouTubeVideos('${meal.strMeal}')" className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
-                </div> */}
+                </div>
                 <div className="group-4">
                     <div className="overlap-7">
                         <div className="group-5">
@@ -195,10 +195,10 @@ function Home() {
               <div>No recipe found.</div> 
             )}
           </div>
+          <Footer />
         </>
     )
   }
 }
 
 export default Home;
-
