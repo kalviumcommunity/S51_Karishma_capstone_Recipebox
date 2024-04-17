@@ -21,6 +21,7 @@ function Foodcontainer() {
         let cookie = cookieArray.find((row) => row.startsWith(name + '='));
         return cookie ? cookie.split('=')[1] : null;
       }
+      
       useEffect(() => {
         fetchrecipeData();
       }, [searchValue]);
@@ -58,6 +59,19 @@ function Foodcontainer() {
           setState({ loading: false, error: err });
         }
       };
+      const searchYouTubeVideos=(dishName) =>{
+        const apiKey = 'AIzaSyCUJV6Nbsb2FkwBHxS46BCVa-ibM_RS7Z0';
+        const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName)}&type=video&key=${apiKey}`;
+        console.log('API Request URL:', apiUrl);
+    
+        axios.get(apiUrl)
+            .then(response => response.data)
+            .then(data => {
+                const videoId = data.items[0].id.videoId;
+                const youtubeLink = `https://www.youtube.com/watch?v=${videoId}`;
+                window.open(youtubeLink,'_blank')
+            })
+    }
       // if (state.error) {
       //   return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
       //   }</div>;
@@ -105,7 +119,7 @@ function Foodcontainer() {
                 </div>
                 <div className="text-meal-name">{meal.strMeal}</div>
                 <div className="div-recipe">
-                    <div onclick="searchYouTubeVideos('${meal.strMeal}')" className="youtube-div" > <img className="star youtube" src={youtube} /><div className="text-recipe">Recipe</div></div>
+                    <div onClick={()=>searchYouTubeVideos(meal.strMeal)} className="youtube-div" > <img className="star youtube" src={youtube} /><div className="text-recipe">Recipe</div></div>
                 </div>
                 <div className="group-4">
                     <div className="overlap-7">
@@ -164,7 +178,7 @@ return(
             </div>
             <div className="text-meal-name">{meal.strMeal}</div>
             <div className="div-recipe">
-                <div onclick="searchYouTubeVideos('${meal.strMeal}')" className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
+                <div onClick={()=>searchYouTubeVideos(meal.strMeal)}  className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
             </div>
             <div className="group-4">
                 <div className="overlap-7">
