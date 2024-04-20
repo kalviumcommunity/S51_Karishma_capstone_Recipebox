@@ -1,29 +1,21 @@
-/* Feedback.css */
-
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Make body fill the entire viewport height */
-    background: linear-gradient(to right, #800000, #B22222); /* Maroon-based gradient background */
-  }
-  
-  .feedback-container {
+.feedback-box {
+    background: linear-gradient(to right, #800000, #B22222); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    animation: scaleIn 0.5s ease; 
   }
   
   .feedback-head {
-    font-family: 'Arial', sans-serif; /* Font family */
+    font-family: 'Arial', sans-serif; 
     font-size: 32px;
     color: #fff;
     margin-bottom: 20px;
-    text-align: center;
   }
   
   .feedback-text {
-    font-family: 'Helvetica', sans-serif; /* Different font family */
+    font-family: 'Helvetica', sans-serif; 
     font-size: 18px;
     color: #fff;
     margin-bottom: 20px;
@@ -36,15 +28,14 @@ body {
   }
   
   .feedback-label {
-    font-family: 'Roboto', sans-serif; /* Another font family */
+    font-family: 'Roboto', sans-serif; 
     font-size: 20px;
     color: #fff;
     margin-bottom: 10px;
   }
   
   .feedback-input {
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -53,7 +44,7 @@ body {
   
   .submit-feedback {
     background: #fff;
-    color: #800000; /* Maroon color for the button text */
+    color: #800000; 
     border: none;
     padding: 12px 24px;
     font-size: 20px;
@@ -63,12 +54,23 @@ body {
   }
   
   .submit-feedback:hover {
-    background: #B22222; /* Darker maroon color on hover */
+    background: #B22222; 
     color: #fff;
-    animation: swing 0.5s ease; /* Swing animation */
+    animation: swing 0.5s ease; 
   }
   
-  /* Swing animation */
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
   @keyframes swing {
     20% {
       transform: rotate(15deg);
