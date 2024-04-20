@@ -7,9 +7,6 @@ import auth from './Fire.config'
 import googleimg from "../assets/google.png"
 
 function LoginPopup() {
-
-
-
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -64,7 +61,7 @@ function LoginPopup() {
       <div className="content">
         
         <span className={`close ${canClose ? '' : 'disabled'}`} >&times;</span>
-        <h2>Login</h2>
+        <h2 className='head_login'>Login</h2>
         <form onSubmit={handleLogin}>
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
           {usernameError && <p className="error">{usernameError}</p>}
@@ -73,7 +70,7 @@ function LoginPopup() {
           <button type="submit" disabled={!canLogin}>Login</button>
         </form>
         <img className='g_icon' src={googleimg} onClick={google} alt="google icon" />
-        <p>Don't have an account? <Link to="/signup">Create one for your own.</Link></p>
+        <p className='s_login'>Don't have an account? <Link to="/signup">Create one for your own.</Link></p>
       </div>
     </div>
   );
