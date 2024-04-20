@@ -40,11 +40,30 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 18px; 
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; 
 }
 
 .login button:hover {
   background-color: rgb(223, 153, 23);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .login p {
@@ -68,7 +87,22 @@
   margin-top: 5px;
 }
 
-.g_icon{
+.g_icon {
   width: 4vw;
-  margin-top:2%;
+  margin-top: 2%;
+  border: 2px solid transparent; 
+  border-radius: 50%; 
+  animation: pulseBorder 1s infinite alternate; 
 }
+
+@keyframes pulseBorder {
+  0% {
+    border-color: transparent; 
+    transform: scale(1); 
+  }
+  100% {
+    border-color: #bc8724; 
+    transform: scale(1.1); 
+  }
+}
+
