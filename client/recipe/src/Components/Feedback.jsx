@@ -3,6 +3,7 @@ import './Feedback.css';
 
 function Feedback() {
   return (
+    <div id='feedback'>
     <div className="feedback-box">
       <h1 className="feedback-head">We'd Love to Hear Your Feedback!</h1>
       
@@ -12,6 +13,7 @@ function Feedback() {
         <p className="feedback-text">Thank you for using Recipe Box. Your feedback helps us improve our platform.</p>
         <button className="submit-feedback" type="submit">Submit</button>
       </form>
+    </div>
     </div>
   );
 }
