@@ -1,5 +1,6 @@
 import React from 'react';
-import './About.css'; // Make sure the path is correct
+import './About.css'; 
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
@@ -11,6 +12,10 @@ function About() {
       <h1 className='a_head'>What makes us different ?</h1>
       <p className='a_para'>You can easily manage your recipes using our user-friendly platform. You will have the ability to add or remove <br />any recipe to your liked list, just by clicking a couple of buttons. <br />you can also view the cooking instruction video with the given youtube link</p>
       <h1 className='a_head'>Therefore, let’s cook and create together!</h1>
+
+      <Link to="/feedback">
+          <button className="feedback-button">Leave Feedback</button>
+        </Link>
       
     </div>
     </div>

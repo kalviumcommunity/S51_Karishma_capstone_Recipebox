@@ -21,4 +21,19 @@
   .a_head{
     font-size: xx-large;
   }
+
+  .feedback-button {
+    background: linear-gradient(to right, #ed6e4f, #e39e6a); 
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .feedback-button:hover {
+    transform: scale(1.1);
+  }
   
