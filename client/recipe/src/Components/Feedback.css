@@ -100,3 +100,12 @@
     width: 50vw;
   }
   
+
+  .feedback-submitted {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    /* color: #007bff; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
