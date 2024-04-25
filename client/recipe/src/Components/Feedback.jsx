@@ -57,13 +57,17 @@ function Feedback() {
               Thank you for using Recipe Box. Your feedback helps us improve
               our platform.
             </p>
-            <div className="f_btns">
-              <button className="submit-feedback">Log Out</button>
-              <button className="submit-feedback" type="submit">Submit</button>
-            </div>
+          <button className="submit-feedback" type="submit">Submit</button>
+        
           </form>
         ) : (
+          <>
           <p className="feedback-submitted">Thank you for your feedback! <br />Hope you had a  great expreience.</p>
+          <div className="f_btns">
+          <button className="submit-feedback">Back</button>
+          <button className="submit-feedback">Log Out</button>
+          </div>
+          </>
         )}
       </div>
     </div>
