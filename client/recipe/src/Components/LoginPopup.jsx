@@ -38,6 +38,7 @@ function LoginPopup() {
                 name:username,
                 password:password
             }).then((response)=>{
+              setCookie('logedin',true,365)
             setCookie('token', response.data.accessToken,365);
             setCookie('username', username,365);
         navigate('/Home')}).catch((error)=>{console.error(error)});
@@ -45,11 +46,18 @@ function LoginPopup() {
   };
   const google = async (e) => {
     const provider = new GoogleAuthProvider();
+    function setCookie(name, value, daysToExpire) {
+      let date = new Date();
+      date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+      document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+  }
     try {
       const result = await signInWithPopup(auth, provider);
       console.log(result);
-      navigate('/Home'); setCookie('logedin','True',365)
+      setCookie('logedin',true,365)
       setCookie("username",result.user.displayName,365);
+      setCookie('token', result.user.accessToken,365);
+      navigate('/Home'); 
     } catch (error) {
       console.error(error.message);
     }

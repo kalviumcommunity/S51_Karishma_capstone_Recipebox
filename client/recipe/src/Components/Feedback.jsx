@@ -13,6 +13,19 @@ function Feedback() {
     let cookie = cookieArray.find((row) => row.startsWith(name + '='));
     return cookie ? cookie.split('=')[1] : null;
   }
+  function setCookie(name, value, daysToExpire) {
+    let date = new Date();
+    date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+    document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+}
+  const signOut=()=>{
+    console.log("Test",getCookie('username'))
+      setCookie('username', "", 0)
+      setCookie('token', "", 0)
+      setCookie("logedin","",0)
+      console.log("Test",getCookie('username'))
+      navigate('/')
+  }
 
   const submit = (e) => {
     e.preventDefault();
@@ -65,7 +78,7 @@ function Feedback() {
           <p className="feedback-submitted">Thank you for your feedback! <br />Hope you had a  great expreience.</p>
           <div className="f_btns">
           <button className="submit-feedback">Back</button>
-          <button className="submit-feedback">Log Out</button>
+          <button className="submit-feedback" onClick={signOut}>Log Out</button>
           </div>
           </>
         )}
