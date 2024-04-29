@@ -9,6 +9,7 @@ import reviewimg2 from "../assets/unsplash_m663zRzRe40 copy.svg";
 import reviewimg3 from "../assets/unsplash_7Sz71zuuW4k.svg";
 import star from "../assets/Star 7.svg"
 import youtube from "../assets/Group 5.png"
+import heart from  "../assets/heart.png"
 
 function Foodcontainer() {
     const location = useLocation()
@@ -121,6 +122,10 @@ function Foodcontainer() {
                 <div className="div-recipe">
                     <div onClick={()=>searchYouTubeVideos(meal.strMeal)} className="youtube-div" > <img className="star youtube" src={youtube} /><div className="text-recipe">Recipe</div></div>
                 </div>
+                <div className='adding'>
+              <button className='adding_f'><img className='heart' src={heart} alt="" />Add to Favorites</button>
+
+            </div>
                 <div className="group-4">
                     <div className="overlap-7">
                         <div className="group-5">
@@ -179,6 +184,11 @@ return(
             <div className="text-meal-name">{meal.strMeal}</div>
             <div className="div-recipe">
                 <div onClick={()=>searchYouTubeVideos(meal.strMeal)}  className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
+            </div>
+            <div className='adding'>
+            
+
+              <button className='adding_f'><img className='heart' src={heart} alt="" />Add to Favorites</button>
             </div>
             <div className="group-4">
                 <div className="overlap-7">
