@@ -1,6 +1,6 @@
 import React from 'react';
 import './Feedback.css';
-import { useNavigate } from 'react-router-dom';
+import {  Link , useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Feedback() {
@@ -77,7 +77,7 @@ function Feedback() {
           <>
           <p className="feedback-submitted">Thank you for your feedback! <br />Hope you had a  great expreience.</p>
           <div className="f_btns">
-          <button className="submit-feedback">Back</button>
+          <button className="submit-feedback"><Link to="/Home">Back</Link></button>
           <button className="submit-feedback" onClick={signOut}>Log Out</button>
           </div>
           </>
