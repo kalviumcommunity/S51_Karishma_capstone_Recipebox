@@ -40,7 +40,7 @@ FavoriteRouter.get('/api/getfavorite', async (req, res) => {
 
   FavoriteRouter.delete('/api/getfavorite/:id', async (req, res) => {
     try {
-      const deletedfavorite = await Blog.findByIdAndDelete(req.params.id);
+      const deletedfavorite = await Favorite.findByIdAndDelete(req.params.id);
       if (!deletedfavorite) {
         return res.status(404).json({ message: 'favorites not found' });
       }
