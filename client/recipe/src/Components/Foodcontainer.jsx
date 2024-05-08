@@ -186,8 +186,7 @@ return(
                 <div onClick={()=>searchYouTubeVideos(meal.strMeal)}  className="youtube-div" > <img className="star youtube" src="./assets/Group 5.png" /><div className="text-recipe">Recipe</div></div>
             </div>
             <div className='adding'>
-            
-
+          
               <button className='adding_f'><img className='heart' src={heart} alt="" />Add to Favorites</button>
             </div>
             <div className="group-4">
