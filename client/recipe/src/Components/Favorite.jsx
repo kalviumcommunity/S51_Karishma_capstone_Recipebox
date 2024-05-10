@@ -10,12 +10,7 @@ import reviewimg3 from "../assets/unsplash_7Sz71zuuW4k.svg";
 import star from "../assets/Star 7.svg"
 import youtube from "../assets/Group 5.png"
 import heart from  "../assets/heart.png"
-
-function Foodcontainer() {
-    const location = useLocation()
-    const topic = location.state.topic;
-    console.log(location)
-    console.log(topic)
+function Favorite() {
     const [searchValue,setSearchValue]= useState(null)
     function getCookie(name) {
         let cookieArray = document.cookie.split('; ');
@@ -23,9 +18,9 @@ function Foodcontainer() {
         return cookie ? cookie.split('=')[1] : null;
       }
       
-      useEffect(() => {
-        fetchrecipeData();
-      }, [searchValue]);
+    //   useEffect(() => {
+    //     fetchrecipeData();
+    //   }, [searchValue]);
       console.log(getCookie('logedin'))
        
       const [data, setData] = useState({ meals:[{strmeal:"No Recipe Found"}] }); 
@@ -34,8 +29,8 @@ function Foodcontainer() {
         error: null,
       });
       useEffect(() => {
-        fetchNewsData();
-      }, [topic]);
+        iplteamdata();
+      }, []);
       const postFavorite=(meal)=>{
         
         axios.post('http://localhost:3000/api/addfavorite',{
@@ -47,30 +42,32 @@ function Foodcontainer() {
     })
     .catch((error) => console.error(error))
       }
-      const fetchrecipeData = async () => {
-        try {
-          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${(searchValue==null)?'a':searchValue}`);
-          setData(response.data); 
+    //   const fetchrecipeData = async () => {
+    //     try {
+    //       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${(searchValue==null)?'a':searchValue}`);
+    //       setData(response.data); 
+    //       console.log(data)
+    //       setState({ loading: false, error: null });
+    //       console.log(response.data);
+    //     } catch (err) {
+    //       console.error(err);
+    //       setState({ loading: false, error: err });
+    //     }
+    //   };
+      const iplteamdata = async()=>{
+        try{
+            const response = await axios.post('http://localhost:3000/api/getfavorite',{
+                    username:"KARISHU SS" 
+            })
+            setData(response.data); 
           console.log(data)
           setState({ loading: false, error: null });
           console.log(response.data);
-        } catch (err) {
-          console.error(err);
-          setState({ loading: false, error: err });
+        }catch(err){
+            console.error(err)
         }
-      };
-      const fetchNewsData = async () => {
-        try {
-          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${topic}`);
-          setData(response.data); 
-          console.log(data)
-          setState({ loading: false, error: null });
-          console.log(response.data);
-        } catch (err) {
-          console.error(err);
-          setState({ loading: false, error: err });
-        }
-      };
+    }
+    
       const searchYouTubeVideos=(dishName) =>{
         const apiKey = 'AIzaSyCUJV6Nbsb2FkwBHxS46BCVa-ibM_RS7Z0';
         const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName)}&type=video&key=${apiKey}`;
@@ -99,7 +96,7 @@ function Foodcontainer() {
     }
 
 
-    console.log(data.meals)
+    console.log(data)
     const searchParameter =(newState)=>{
         setSearchValue(newState);
         setState({ loading: false, error: "err" });
@@ -112,8 +109,8 @@ function Foodcontainer() {
         <>
           <Navbar onChange={searchParameter}></Navbar>
           <div id='Recipe'>
-            {data.meals.length > 0 ? ( 
-              data.meals.map((meal,index)=>{
+            {data.length > 0 ? ( 
+              data.map((meal,index)=>{
                 return (                <div className="cato-div-meal"  key={index}>
                 <div className="rectangle"></div>
                 <div className="group-2">
@@ -175,8 +172,8 @@ return(
     <>
     <Navbar onChange={searchParameter}></Navbar>
     <div id='Recipe'>
-    {data.meals.length > 0 ? ( 
-          data.meals.map((meal,index)=>{
+    {data.length > 0 ? ( 
+          data.map((meal,index)=>{
             return (                <div className="cato-div-meal"  key={index}>
             <div className="rectangle"></div>
             <div className="group-2">
@@ -220,6 +217,4 @@ return(
 }
 }
 
-
-
-export default Foodcontainer
+export default Favorite
