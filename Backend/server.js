@@ -4,6 +4,7 @@ require('dotenv').config()
 const cors  = require( 'cors' )
 const {login,signup} = require('./Routes/authserver')
 const FeedbackRouter = require('./Routes/Feedback.route')
+const FavoritesRouter = require('./Routes/Favorites.route')
 const app = express();
 const port = 3000;
 
@@ -12,6 +13,8 @@ app.use(express.json());
 app.use(login);
 app.use(signup);
 app.use(FeedbackRouter)
+app.use(FavoritesRouter)
+
 app.get('/', (req, res) => {
   res.json({
     message: 'o_O',

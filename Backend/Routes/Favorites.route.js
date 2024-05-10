@@ -5,14 +5,25 @@ const Joi = require('joi')
 const schema = Joi.object({
     idMeal:Joi.number().integer().required(),
     strMeal:Joi.string().required(),
-    strMealThumb: Joi.string().required()
+    strMealThumb: Joi.string().required(),
+    username:Joi.string().required()
   });
-FavoriteRouter.post('/api/addfavorite', async(req, res) =>{
+  const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]
+    if(token==null) return res.sendStatus(401)
+    jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
+      if(err) return res.sendStatus(403)
+      req.user=user;
+      next()
+    })
+  }
+FavoriteRouter.post('/api/addfavorite', authenticateToken,async(req, res) =>{
     const {error,value} = schema.validate(req.body,{abortEarly:false}); 
     try{
         if (!error) {
-        let{idMeal,strMeal,strMealThumb} = req.body;
-        const favoriteData = await Favorite.create({idMeal,strMeal,strMealThumb});
+        let{username,idMeal,strMeal,strMealThumb} = req.body;
+        const favoriteData = await Favorite.create({username,idMeal,strMeal,strMealThumb});
         res.status(201).json(favoriteData);}
         else {
             return res.status(400).send({
@@ -28,17 +39,17 @@ FavoriteRouter.post('/api/addfavorite', async(req, res) =>{
     }
 })
 
-FavoriteRouter.get('/api/getfavorite', async (req, res) => {
+FavoriteRouter.get('/api/getfavorite', authenticateToken,async (req, res) => {
     try {
       const favorite = await Favorite.find();
-      res.json(favorite);
+      res.json(favorite.filter(favorite => favorite.username === req.user.name));
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Error fetching favorites' });
     }
   });
 
-  FavoriteRouter.delete('/api/getfavorite/:id', async (req, res) => {
+  FavoriteRouter.delete('/api/getfavorite/:id', authenticateToken,async (req, res) => {
     try {
       const deletedfavorite = await Favorite.findByIdAndDelete(req.params.id);
       if (!deletedfavorite) {
