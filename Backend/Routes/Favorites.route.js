@@ -14,11 +14,11 @@ const schema = Joi.object({
     if(token==null) return res.sendStatus(401)
     jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user)=>{
       if(err) return res.sendStatus(403)
-      req.user=user;
+      req.user=user
       next()
     })
   }
-FavoriteRouter.post('/api/addfavorite', authenticateToken,async(req, res) =>{
+FavoriteRouter.post('/api/addfavorite',async(req, res) =>{
     const {error,value} = schema.validate(req.body,{abortEarly:false}); 
     try{
         if (!error) {
@@ -39,10 +39,10 @@ FavoriteRouter.post('/api/addfavorite', authenticateToken,async(req, res) =>{
     }
 })
 
-FavoriteRouter.get('/api/getfavorite', authenticateToken,async (req, res) => {
+FavoriteRouter.post('/api/getfavorite',async (req, res) => {
     try {
       const favorite = await Favorite.find();
-      res.json(favorite.filter(favorite => favorite.username === req.user.name));
+      res.json(favorite.filter(favorite => favorite.username === req.body.username));
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Error fetching favorites' });

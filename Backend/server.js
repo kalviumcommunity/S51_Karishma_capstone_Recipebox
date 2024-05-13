@@ -5,6 +5,8 @@ const cors  = require( 'cors' )
 const {login,signup} = require('./Routes/authserver')
 const FeedbackRouter = require('./Routes/Feedback.route')
 const FavoritesRouter = require('./Routes/Favorites.route')
+const RecipeRouter = require('./Routes/Recipe.route')
+
 const app = express();
 const port = 3000;
 
@@ -14,6 +16,8 @@ app.use(login);
 app.use(signup);
 app.use(FeedbackRouter)
 app.use(FavoritesRouter)
+app.use(RecipeRouter)
+
 
 app.get('/', (req, res) => {
   res.json({
