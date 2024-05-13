@@ -73,7 +73,7 @@ function Foodcontainer() {
       };
       const searchYouTubeVideos=(dishName) =>{
         const apiKey = 'AIzaSyCUJV6Nbsb2FkwBHxS46BCVa-ibM_RS7Z0';
-        const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName)}&type=video&key=${apiKey}`;
+        const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName+ "recipe")}&type=video&key=${apiKey}`;
         console.log('API Request URL:', apiUrl);
     
         axios.get(apiUrl)

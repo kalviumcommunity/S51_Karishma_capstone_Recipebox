@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import './Foodcontainer.css'
+import './Favorite.css'
 import Ellipse from "../assets/Ellipse 57.svg";
 import reviewimg1 from "../assets/unsplash_EPi3TRQc5Z0 copy.svg";
 import reviewimg2 from "../assets/unsplash_m663zRzRe40 copy.svg";
@@ -18,9 +18,7 @@ function Favorite() {
         return cookie ? cookie.split('=')[1] : null;
       }
       
-    //   useEffect(() => {
-    //     fetchrecipeData();
-    //   }, [searchValue]);
+    
       console.log(getCookie('logedin'))
        
       const [data, setData] = useState({ meals:[{strmeal:"No Recipe Found"}] }); 
@@ -42,18 +40,7 @@ function Favorite() {
     })
     .catch((error) => console.error(error))
       }
-    //   const fetchrecipeData = async () => {
-    //     try {
-    //       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${(searchValue==null)?'a':searchValue}`);
-    //       setData(response.data); 
-    //       console.log(data)
-    //       setState({ loading: false, error: null });
-    //       console.log(response.data);
-    //     } catch (err) {
-    //       console.error(err);
-    //       setState({ loading: false, error: err });
-    //     }
-    //   };
+
       const iplteamdata = async()=>{
         try{
             const response = await axios.post('http://localhost:3000/api/getfavorite',{
@@ -70,7 +57,7 @@ function Favorite() {
     
       const searchYouTubeVideos=(dishName) =>{
         const apiKey = 'AIzaSyCUJV6Nbsb2FkwBHxS46BCVa-ibM_RS7Z0';
-        const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName)}&type=video&key=${apiKey}`;
+        const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(dishName + "recipe")}&type=video&key=${apiKey}`;
         console.log('API Request URL:', apiUrl);
     
         axios.get(apiUrl)
@@ -81,10 +68,10 @@ function Favorite() {
                 window.open(youtubeLink,'_blank')
             })
     }
-      // if (state.error) {
-      //   return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
-      //   }</div>;
-      // }
+      if (state.error) {
+        return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
+        }</div>;
+      }
       if (state.loading) {
         return <div>Loading...</div>;
       }
