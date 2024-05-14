@@ -26,6 +26,7 @@ function App({onChange}) {
             <ul className={`menu-inner ${click ? 'hidden' : ''}`}>
               <li className={`menu-item ${click ? 'hidden' : ''} `} ><Link to='/Home' className='link'>Home</Link></li>
               <li className={`menu-item ${click ? 'hidden' : ''} link`}><Link to='/Recipes' className='link'>Recipes</Link></li>
+              <li className={`menu-item ${click ? 'hidden' : ''} link`}><Link to='/Favorites' className='link'>Favorites</Link></li>
             </ul>
           </div>
           <div className="search-box">
