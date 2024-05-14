@@ -8,7 +8,7 @@ import SignUp from './Components/SignUp';
 import Landingpage from './Components/Landingpage';
 import Foodcontainer from './Components/Foodcontainer';
 import Feedback from './Components/Feedback'; 
-import Recipes from './Components/Favourites';
+import Recipes from './Components/Recipes';
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/recipe/:topic" element={<Foodcontainer />} />
           <Route path="/feedback" element={<Feedback />} />
-          <Route path="/Recipe" element={< Recipes/>} />
+          <Route path="/Recipes" element={< Recipes/>} />
 
 
         </Routes>
