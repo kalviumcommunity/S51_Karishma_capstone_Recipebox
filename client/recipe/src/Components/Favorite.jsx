@@ -27,7 +27,7 @@ function Favorite() {
         error: null,
       });
       useEffect(() => {
-        iplteamdata();
+        favoritedata();
       }, []);
       const postFavorite=(meal)=>{
         
@@ -41,7 +41,7 @@ function Favorite() {
     .catch((error) => console.error(error))
       }
 
-      const iplteamdata = async()=>{
+      const favoritedata = async()=>{
         try{
             const response = await axios.post('http://localhost:3000/api/getfavorite',{
                     username:"KARISHU SS" 
