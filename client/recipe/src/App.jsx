@@ -9,6 +9,8 @@ import Landingpage from './Components/Landingpage';
 import Foodcontainer from './Components/Foodcontainer';
 import Feedback from './Components/Feedback'; 
 import Recipes from './Components/Recipes';
+import Createrecipe from './Components/Createrecipe';
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/recipe/:topic" element={<Foodcontainer />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/Recipes" element={< Recipes/>} />
+          <Route path="/Createrecipe" element={< Createrecipe/>} />
+
 
 
         </Routes>

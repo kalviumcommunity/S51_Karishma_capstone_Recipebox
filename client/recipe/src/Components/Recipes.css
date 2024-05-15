@@ -1,0 +1,31 @@
+.cont_recipe{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    color: white;
+}
+.h_recipe{
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 4vh;
+}
+.info_recipe{
+font-family: "Roboto Condensed", sans-serif;
+font-optical-sizing: auto;
+font-style: normal;
+margin-bottom: 4vh;
+}
+.btn_recipe{
+    height:5vh;
+    width: 10vw;
+    border-radius: 50px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: larger;
+}
