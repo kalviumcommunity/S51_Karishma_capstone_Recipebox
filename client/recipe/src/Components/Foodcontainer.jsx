@@ -84,10 +84,10 @@ function Foodcontainer() {
                 window.open(youtubeLink,'_blank')
             })
     }
-      // if (state.error) {
-      //   return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
-      //   }</div>;
-      // }
+      if (state.error) {
+        return <div style={{ color: 'red' }}>Error: {state.error.response.data.errors
+        }</div>;
+      }
       if (state.loading) {
         return <div>Loading...</div>;
       }
