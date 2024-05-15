@@ -44,7 +44,7 @@ function Recipes() {
         <div className='cont_recipe'>
           <h1 className='h_recipe'>Welcome to Recipe Box</h1>
           <h2 className='info_recipe'>Click on the button below to add your first recipe</h2>
-          <Link to='/Creatrecipe'><button className='btn_recipe'>Add + </button></Link>
+          <Link to='/Createrecipe'><button className='btn_recipe'>Add + </button></Link>
         </div>
       }
     </div>
