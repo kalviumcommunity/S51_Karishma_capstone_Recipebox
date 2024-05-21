@@ -31,12 +31,9 @@ function Favorite() {
       }, []);
       const postFavorite=(meal)=>{
         
-        axios.post('http://localhost:3000/api/addfavorite',{
-          idMeal:meal.idMeal,
-          strMeal:meal.strMeal,
-          strMealThumb:meal.strMealThumb,
-          username:getCookie('username')})
+        axios.delete(`http://localhost:3000/api/deletefavorite/${meal._id}`)
      .then((response) =>{ console.log(response.data);
+      window.location.reload()
     })
     .catch((error) => console.error(error))
       }
@@ -118,7 +115,7 @@ function Favorite() {
                     <div onClick={()=>searchYouTubeVideos(meal.strMeal)} className="youtube-div" > <img className="star youtube" src={youtube} /><div className="text-recipe">Recipe</div></div>
                 </div>
                 <div className='adding'>
-              <button className='adding_f' onClick={()=>{postFavorite(meal)}}><img className='heart' src={heart} alt="" />Add to Favorites</button>
+              <button className='adding_f' onClick={()=>{postFavorite(meal)}}><img className='heart' src={heart} alt="" />Remove from Favorites</button>
 
             </div>
                 <div className="group-4">
