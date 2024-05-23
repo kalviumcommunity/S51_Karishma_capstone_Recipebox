@@ -3,10 +3,12 @@ import { Link ,useNavigate} from 'react-router-dom';
 import './LoginPopup.css';
 import axios from "axios"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import auth from './Fire.config'
+import app from './Fire.config'
 import googleimg from "../assets/google.png"
+import { getAuth} from 'firebase/auth'
 
 function LoginPopup() {
+  const auth =getAuth(app)
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
