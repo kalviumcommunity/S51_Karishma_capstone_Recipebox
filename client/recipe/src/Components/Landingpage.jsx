@@ -17,11 +17,25 @@ import { useNavigate, Link } from "react-router-dom";
 
 
 function Landingpage() {
+    const navigate=useNavigate()
     function getCookie(name) {
         let cookieArray = document.cookie.split('; ');
         let cookie = cookieArray.find((row) => row.startsWith(name + '='));
         return cookie ? cookie.split('=')[1] : null;
     }
+    function setCookie(name, value, daysToExpire) {
+        let date = new Date();
+        date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+        document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    }
+    const signOut=()=>{
+        console.log("Test",getCookie('username'))
+          setCookie('username', "", 0)
+          setCookie('token', "", 0)
+          setCookie("logedin","",0)
+          console.log("Test",getCookie('username'))
+          navigate('/')
+      }
     return (
         <>
             <div className="landing_container">
@@ -33,7 +47,7 @@ function Landingpage() {
                     <div className="features">
                         
                         {
-                            (getCookie('username')!=undefined) ?
+                            (getCookie('logedin')!=false) ?
                                 <>
                                 <Link to="/home"><span className="btn_f">Home</span></Link>
                                 </>
@@ -44,9 +58,28 @@ function Landingpage() {
                         <Link style={{textDecoration:'none',color:'#000'}}to='/about'><span className="btn_f">About Us</span></Link>
                         <span className="btn_f">Recipe</span>
                     </div>
+                    <div>
+                    {
+                            (getCookie('logedin')!=undefined) ?
+                                <>
+                                <button className="submit-feedback" onClick={signOut}>Log Out</button>
+                                </>
+                            
+                              :<></>
+                        }
+                    </div>
                     <div className="search_profile">
                         <img className="btn_f" src={search} alt="" />
-                        <Link style={{textDecoration:'none',color:'#000'}}to='/login'><img className="btn_f" src={user} alt="" /></Link>
+                        {
+                            (getCookie('logedin')!=undefined) ?
+                                <>
+                                <Link style={{textDecoration:'none',color:'#000'}}to='/home'><img className="btn_f" src={user} alt="" /></Link>
+                                </>
+                            
+                              :
+                              <Link style={{textDecoration:'none',color:'#000'}}to='/login'><img className="btn_f" src={user} alt="" /></Link>
+                        }
+                        
                     </div>
                 </div>
 
@@ -67,7 +100,7 @@ function Landingpage() {
                         <h1 className="ways">Discover, Create, Share</h1>
                         
                         {
-                            (getCookie('username')!=undefined) ?
+                            (getCookie('logedin')!=undefined) ?
                                 <>
                                 <Link className="see_all" to="/home">See All</Link>
                                 </>

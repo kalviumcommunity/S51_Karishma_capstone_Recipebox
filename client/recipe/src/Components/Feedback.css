@@ -97,9 +97,8 @@
 
   .f_btns{
     display: flex;
-    justify-content: space-between;
-    width: 50vw;
-    margin-left: 24%;
+    justify-content: center;
+    width: 100vw;
     margin-top: 5%;
   }
   
