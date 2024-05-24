@@ -5,53 +5,63 @@ import Navbar from './Navbar'
 import './Createrecipe.css'
 import app from './Fire.config'
 import { getStorage } from "firebase/storage";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { ref, uploadBytesResumable, getDownloadURL } from '@firebase/storage';
 
 
 
 export default function Createrecipe() {
   const storage = getStorage(app);
-  const [name,setName]=useState()
+  const [recipename,setName]=useState()
   const [youtube,setYoutube]=useState()
   const [Ingredient,setIngredient]=useState()
-  const [imgUrl, setImgUrl] = useState(null);
-  const [progresspercent, setProgresspercent] = useState(0);
-const handleSubmit = (e) => {
-  e.preventDefault()
-  const file = e.target[0]?.files[0]
+  const [progrss, setProgrss] = useState(0);
+  const [isLoading, setIsLoading] = useState();
+  const [file, setFile] = useState();
+  const [url, setUrl] = useState();
+  function getCookie(name) {
+    let cookieArray = document.cookie.split('; ');
+    let cookie = cookieArray.find((row) => row.startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : null;
+}
+const navigate = useNavigate()
+  const onFileUpload = () => {
+    if (!file) return;
+    setIsLoading(true);
+    const storageRef = ref(storage, `/files/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
-  if (!file) return;
-
-  const storageRef = ref(storage, `files/${file.name}`);
-  const uploadTask = uploadBytesResumable(storageRef, file);
-
-  uploadTask.on("state_changed",
-    (snapshot) => {
-      const progress =
-        Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-      setProgresspercent(progress);
+    uploadTask.on("state_changed", (snapshot) => {
+        var progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgrss(progress);
+    }, (err) => {
+        console.log(err);
+        setIsLoading(false);
     },
-    (error) => {
-      alert(error);
-    },
-    () => {
-      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        setImgUrl(downloadURL)
-      });
-    }
-  );
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref)
+                .then(url => {
+                    setUrl(url);
+                    setIsLoading(false);
+                })
+        }
+    )
+}
+
+const onFileChange = e => {
+    setFile(e.target.files[0]);
+    e.preventDefault();
 }
   const Submit=(e)=>{
     e.preventDefault();
     axios.post("http://localhost:3000/api/addrecipe",{
       username:getCookie('username'),
-      strMeal:name,
-      strMealThumb:imgUrl,
+      strMeal:recipename,
+      strMealThumb:url,
       youtubeLink:youtube,
       ingredient:Ingredient
     }).then((res)=>{
       console.log(res.data)
-      useNavigate("/Recipes")
+      navigate('/Recipes')
     })
   
   }
@@ -66,7 +76,7 @@ const handleSubmit = (e) => {
         <div className='n_recipe'>
           <span>
           Recipe Name:
-        </span><input type="text" onClick={(e)=>{setName(e.target.value)}} />
+        </span><input type="text" onChange={(e)=>{setName(e.target.value)}} />
         </div>
         {/* <div className="i_recipe">
           <span>
@@ -76,31 +86,21 @@ const handleSubmit = (e) => {
         <div className='y_recipe'>
           <span>
           Youtube Link:
-        </span><input type="text"  onClick={(e)=>{setYoutube(e.target.value)}}/>
+        </span><input type="text"  onChange={(e)=>{setYoutube(e.target.value) }}/>
         </div>
         <div className='i_recipe' >
           <span>
           Ingredient:
-        </span><input type="text"  onClick={(e)=>{setIngredient(e.target.value)}} />
+        </span><input type="text"  onChange={(e)=>{setIngredient(e.target.value)}} />
         </div>
         <div>
-          <span>
-          <form onSubmit={handleSubmit} className='form'>
-        <input type='file' />
-        <button type='submit'>Upload</button>
-      </form>
-          <label>Select image:</label>
-          {
-        !imgUrl &&
-        <div className='outerbar'>
-          <div className='innerbar' style={{ width: `${progresspercent}%` }}>{progresspercent}%</div>
-        </div>
-      }
-      {
-        imgUrl &&
-        <img src={imgUrl} alt='uploaded file' height={200} />
-      }
-          </span>
+        <input type="file" onChange={onFileChange} />
+            <button type='button' onClick={onFileUpload}>
+                Upload!
+            </button>
+            <div className="break"></div>
+            {isLoading && <p>File upload <b>{progrss}%</b></p>}
+            {/* {url && <p>Firebase storage URL: <img src={url} /></p>} */}
         </div>
         <div>
           <button type='submit'> Submit</button>
