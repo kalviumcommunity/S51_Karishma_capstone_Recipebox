@@ -27,7 +27,7 @@ function LoginPopup() {
     }
     
     function getCookie(name) {
-        let cookieArray = document.cookie.split('; ');
+        let cookieArray = document.cookie.split('; ');  
         let cookie = cookieArray.find((row) => row.startsWith(name + '='));
         return cookie ? cookie.split('=')[1] : null;
     }
