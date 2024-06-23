@@ -28,4 +28,7 @@ margin-bottom: 4vh;
     font-weight: 600;
     font-style: normal;
     font-size: larger;
+    position: fixed;
+    bottom: 5vh;
+    right:2vw;
 }
