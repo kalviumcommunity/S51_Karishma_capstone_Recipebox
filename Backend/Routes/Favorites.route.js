@@ -38,6 +38,26 @@ FavoriteRouter.post('/api/addfavorite',async(req, res) =>{
         })
     }
 })
+FavoriteRouter.put('/api/updatefavorite',async(req, res) =>{
+  const {error,value} = schema.validate(req.body,{abortEarly:false}); 
+  try{
+      if (!error) {
+      let{username,idMeal,strMeal,strMealThumb} = req.body;
+      const favoriteData = await Favorite.findByIdAndUpdate(req.params.id,{username,idMeal,strMeal,strMealThumb});
+      res.status(201).json(favoriteData);}
+      else {
+          return res.status(400).send({
+              message: `Bad request, error:${error}`
+          })
+          console.error(error)
+      }
+  } catch(err){
+      console.log(err);
+      return res.status(500).send({
+          message: "Internal server error"
+      })
+  }
+});
 
 FavoriteRouter.post('/api/getfavorite',async (req, res) => {
     try {
@@ -49,7 +69,7 @@ FavoriteRouter.post('/api/getfavorite',async (req, res) => {
     }
   });
 
-  FavoriteRouter.delete('/api/getfavorite/:id', authenticateToken,async (req, res) => {
+  FavoriteRouter.delete('/api/deletefavorite/:id',async (req, res) => {
     try {
       const deletedfavorite = await Favorite.findByIdAndDelete(req.params.id);
       if (!deletedfavorite) {
