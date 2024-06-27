@@ -41,17 +41,17 @@ RecipeRouter.post('/api/addrecipe',async(req, res) =>{
     }
 })
 
-RecipeRouter.post('/api/getrecipe',async (req, res) => {
+RecipeRouter.get('/api/getrecipe',async (req, res) => {
     try {
       const recipe = await Recipe.find();
-      res.json(recipe.filter(recipe => recipe.username === req.body.username));
+      res.json(recipe);
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Error fetching recipes' });
     }
   });
 
-  RecipeRouter.delete('/api/getrecipe/:id', authenticateToken,async (req, res) => {
+  RecipeRouter.delete('/api/deleterecipe/:id',async (req, res) => {
     try {
       const deletedrecipe = await Recipe.findByIdAndDelete(req.params.id);
       if (!deletedrecipe) {
