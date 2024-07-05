@@ -31,7 +31,7 @@ function Feedback() {
     e.preventDefault();
     const name = getCookie('username');
     axios
-      .post('http://localhost:3000/api/feedback', {
+      .post('https://s51-karishma-capstone-recipebox.onrender.com/api/feedback', {
         name: name,
         feedback: feedback
       })

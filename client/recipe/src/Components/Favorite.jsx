@@ -31,7 +31,7 @@ function Favorite() {
       }, []);
       const postFavorite=(meal)=>{
         
-        axios.delete(`http://localhost:3000/api/deletefavorite/${meal._id}`)
+        axios.delete(`https://s51-karishma-capstone-recipebox.onrender.com/api/deletefavorite/${meal._id}`)
      .then((response) =>{ console.log(response.data);
       window.location.reload()
     })
@@ -40,7 +40,7 @@ function Favorite() {
 
       const favoritedata = async()=>{
         try{
-            const response = await axios.post('http://localhost:3000/api/getfavorite',{
+            const response = await axios.post('https://s51-karishma-capstone-recipebox.onrender.com/api/getfavorite',{
                     username:"KARISHU SS" 
             })
             setData(response.data); 
