@@ -53,7 +53,7 @@ const onFileChange = e => {
 }
   const Submit=(e)=>{
     e.preventDefault();
-    axios.post("http://localhost:3000/api/addrecipe",{
+    axios.post("https://s51-karishma-capstone-recipebox.onrender.com/api/addrecipe",{
       username:getCookie('username'),
       strMeal:recipename,
       strMealThumb:url,

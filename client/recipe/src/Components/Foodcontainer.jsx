@@ -38,7 +38,7 @@ function Foodcontainer() {
       }, [topic]);
       const postFavorite=(meal)=>{
         
-        axios.post('http://localhost:3000/api/addfavorite',{
+        axios.post('https://s51-karishma-capstone-recipebox.onrender.com/api/addfavorite',{
           idMeal:meal.idMeal,
           strMeal:meal.strMeal,
           strMealThumb:meal.strMealThumb,

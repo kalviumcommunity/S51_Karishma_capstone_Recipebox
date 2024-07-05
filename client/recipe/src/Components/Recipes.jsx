@@ -33,7 +33,7 @@ function Recipe() {
     useEffect(() => {
         const recipedata = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/getrecipe');
+                const response = await axios.get('https://s51-karishma-capstone-recipebox.onrender.com/api/getrecipe');
                 setData(response.data);
                 setState({ loading: false, error: null });
                 console.log(response.data);
@@ -45,7 +45,7 @@ function Recipe() {
     }, []);
 
     const postFavorite = (meal) => {
-        axios.delete(`http://localhost:3000/api/deleterecipe/${meal._id}`)
+        axios.delete(`https://s51-karishma-capstone-recipebox.onrender.com/api/deleterecipe/${meal._id}`)
             .then((response) => {
                 console.log(response.data);
                 window.location.reload();
