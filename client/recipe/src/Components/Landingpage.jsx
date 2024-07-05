@@ -89,7 +89,15 @@ function Landingpage() {
                         <h1 className="intro">Cooking Made Fun <br></br>and Easy: Unleash <br></br>Your Inner Chef</h1>
                         <p className="tag_line">Discover more recipes in your hand with the best recipe.<br></br>
                             Help you to find the easiest way to cook.</p>
-                        <button className="explore"><Link style={{textDecoration:'none',color:'#fff'}}to='/login'>Explore Recipe</Link></button>
+                        {
+                            (getCookie('logedin')!=undefined) ?
+                                <>
+                                <Link to="/home"><button className="explore">Explore Recipe</button></Link>
+                                </>
+                            
+                              :
+                              <Link style={{textDecoration:'none',color:'#fff'}}to='/login'><button className="explore">Explore Recipe</button></Link>
+                        }
                     </div>
                     <div className="front_meal">
                         <img src={front_meal} alt="" />
