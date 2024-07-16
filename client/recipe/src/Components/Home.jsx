@@ -27,7 +27,7 @@ import star from "../assets/Star 7.svg"
 
 function Home() {
     const [searchValue,setSearchValue]= useState(null)
-    const [data, setData] = useState({ meals:[{strmeal:"No Recipe Found"}] }); 
+    const [data, setData] = useState({ meals:[] }); 
     const [state, setState] = useState({
       loading: true,
       error: null,
@@ -53,14 +53,14 @@ function Home() {
           setState({ loading: false, error: err });
         }
       };
-    if(searchValue == null){
+        if(searchValue == null){
   return (
     <>
         <Navbar onChange={searchParameter}></Navbar>
 
         <div id='cato'>
         <p className="menu-that-always">
-            <span className="text-wrapper-2">Catogories</span>
+            <span className="text-wrapper-2">Categories</span>
             <span className="span"> that </span>
             <span className="text-wrapper-3">always</span>
             <span className="span"> make you fall in </span>
@@ -70,12 +70,12 @@ function Home() {
         <Link to={`/recipe/Chicken`} state={{'topic':'Chicken'}}>
             <div className='items'>
                 <img className='meal-image' src={img1} alt="${meal.strMeal}"/>
-                <h3 className='meal-name name' >Chicken</h3>
+                <h3 className='meal-name name'>Chicken</h3>
             </div></Link>
             <Link to={`/recipe/Side `} state={{'topic':'Side'}}>
             <div className='items'>
                 <img className='meal-image' src={img2} alt="${meal.strMeal}"/>
-                <h3 className='meal-name name'   >Side Dish</h3>
+                <h3 className='meal-name name'>Side Dish</h3>
             </div></Link>
             <Link to={`/recipe/breakfast `} state={{'topic':'breakfast'}}>
             <div className='items'>
@@ -85,17 +85,17 @@ function Home() {
             <Link to={`/recipe/pasta `} state={{'topic':'pasta'}}>
             <div className='items'>
                 <img className='meal-image' src={img4} alt="${meal.strMeal}"/>
-                <h3 className='meal-name name'  >Pasta</h3>
+                <h3 className='meal-name name'>Pasta</h3>
             </div></Link>
             <Link to={`/recipe/vegan `} state={{'topic':'vegan'}}>
             <div className='items'>
                 <img className='meal-image' src={img5} alt="${meal.strMeal}"/>
-                <h3 className='meal-name name' >Vegan</h3>
+                <h3 className='meal-name name'>Vegan</h3>
             </div></Link>
             <Link to={`/recipe/dessert `} state={{'topic':'dessert'}}>
             <div className='items'>
                 <img className='meal-image' src={img6} alt="${meal.strMeal}"/>
-                <h3 className='meal-name name'  >Dessert</h3>
+                <h3 className='meal-name name'>Dessert</h3>
             </div></Link>
             <Link to={`/recipe/goat `} state={{'topic':'goat'}}>
             <div className='items'>
@@ -117,7 +117,7 @@ function Home() {
                 <img className='meal-image' src={img10} alt="${meal.strMeal}"/>
                 <h3 className='meal-name name' >Beef</h3>
             </div></Link>
-            <Link to={`/recipe/egetarian `} state={{'topic':'egetarian'}}>
+            <Link to={`/recipe/vegetarian `} state={{'topic':'egetarian'}}>
             <div className='items'>
                 <img className='meal-image' src={img11} alt="${meal.strMeal}"/>
                 <h3 className='meal-name name'  >Vegetarian</h3>
@@ -160,7 +160,7 @@ function Home() {
         <>
         <Navbar onChange={searchParameter}></Navbar>
         <div id='Recipe'>
-        {data.meals.length > 0 ? ( 
+        {data.meals.length > 1 ? ( 
               data.meals.map((meal,index)=>{
                 return (                <div className="cato-div-meal"  key={index}>
                 <div className="rectangle"></div>

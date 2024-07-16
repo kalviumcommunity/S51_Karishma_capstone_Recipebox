@@ -484,3 +484,12 @@ body{
     height: 15px;
     width: 15px;
   }
+  .nor{
+    font-size: xx-large;
+    height:89vh; 
+    width: 100vw; 
+    color: #fff; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+  }
