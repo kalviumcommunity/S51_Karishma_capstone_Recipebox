@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from './Navbar'
 import './Createrecipe.css'
@@ -76,7 +76,8 @@ const onFileChange = e => {
         <div className='n_recipe'>
           <span>
           Recipe Name:
-        </span><input type="text" onChange={(e)=>{setName(e.target.value)}} />
+        </span>
+        <input id="g1" type="text" onChange={(e)=>{setName(e.target.value)}} />
         </div>
         {/* <div className="i_recipe">
           <span>
@@ -86,12 +87,12 @@ const onFileChange = e => {
         <div className='y_recipe'>
           <span>
           Youtube Link:
-        </span><input type="text"  onChange={(e)=>{setYoutube(e.target.value) }}/>
+        </span><input id="g1" type="text"  onChange={(e)=>{setYoutube(e.target.value) }}/>
         </div>
         <div className='i_recipe' >
           <span>
           Ingredient:
-        </span><input type="text"  onChange={(e)=>{setIngredient(e.target.value)}} />
+        </span><input id="g1" type="text"  onChange={(e)=>{setIngredient(e.target.value)}} />
         </div>
         <div>
         <input type="file" onChange={onFileChange} />

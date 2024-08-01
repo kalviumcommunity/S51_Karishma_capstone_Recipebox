@@ -15,8 +15,9 @@ function Foodcontainer() {
   const location = useLocation();
   const { topic } = useParams();
   const [searchValue, setSearchValue] = useState(null);
-  const [data, setData] = useState({ meals: [{ strMeal: 'No Recipe Found' }] });
+  const [data, setData] = useState({ meals: [] });
   const [state, setState] = useState({ loading: true, error: null });
+  const [popup, setPopup] = useState({ show: false, message: '' });
 
   function getCookie(name) {
     const cookieArray = document.cookie.split('; ');
@@ -26,7 +27,7 @@ function Foodcontainer() {
 
   useEffect(() => {
     if (searchValue !== null) {
-      fetchrecipeData();
+      fetchRecipeData();
     }
   }, [searchValue]);
 
@@ -39,13 +40,21 @@ function Foodcontainer() {
       idMeal: meal.idMeal,
       strMeal: meal.strMeal,
       strMealThumb: meal.strMealThumb,
-      username: getCookie('username'),
+      // username: getCookie('username')
     })
-      .then((response) => console.log(response.data))
-      .catch((error) => console.error(error));
+    .then((response) => {
+      console.log(response.data, "data");
+      setPopup({ show: true, message: 'Favorite added successfully!' });
+      setTimeout(() => setPopup({ show: false, message: '' }), 3000);
+    })
+    .catch((error) => {
+      console.error(error);
+      setPopup({ show: true, message: 'Error adding favorite!' });
+      setTimeout(() => setPopup({ show: false, message: '' }), 3000);
+    });
   };
 
-  const fetchrecipeData = async () => {
+  const fetchRecipeData = async () => {
     try {
       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue || 'a'}`);
       setData(response.data);
@@ -102,11 +111,7 @@ function Foodcontainer() {
           <div className="text-recipe">Recipe</div>
         </div>
       </div>
-      <div className="adding">
-        <button className="adding_f" onClick={() => postFavorite(meal)}>
-          <img className="heart" src={heart} alt="heart" />Add to Favorites
-        </button>
-      </div>
+      
       <div className="group-4">
         <div className="overlap-7">
           <div className="group-5">
@@ -132,6 +137,7 @@ function Foodcontainer() {
     <>
       <Navbar onChange={setSearchValue} />
       <div id="Recipe">
+        {popup.show && <div className="popup">{popup.message}</div>}
         {data.meals && data.meals.length > 0 ? data.meals.map(renderMeal) : <div className='nor'>No recipe found.</div>}
       </div>
     </>
