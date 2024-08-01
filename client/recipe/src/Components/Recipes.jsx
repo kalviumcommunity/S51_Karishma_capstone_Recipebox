@@ -26,7 +26,7 @@ function Recipe() {
 
     const [data, setData] = useState({ meals: [{ strmeal: "No Recipe Found" }] });
     const [state, setState] = useState({
-        loading: true,
+        loading: false,
         error: null,
     });
 

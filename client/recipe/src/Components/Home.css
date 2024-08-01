@@ -60,7 +60,7 @@
 
 #meal-categories{
     display: flex;
-    flex-wrap: wrap;
+     flex-wrap: wrap;
     justify-content: center;
 }
 .items {
@@ -430,6 +430,17 @@
 .youtube{
     top: 10px;
     left: 10px;
+}
+
+.no-recipe{
+    /* border: 2px solid white; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 90vw;
+    height: 83.7vh;
+    color: white;
 }
 
 

@@ -10,6 +10,9 @@ import Foodcontainer from './Components/Foodcontainer';
 import Feedback from './Components/Feedback'; 
 import Recipes from './Components/Recipes';
 import Createrecipe from './Components/Createrecipe';
+import AI from './Components/AI';
+
+import "./App.css"
 
 
 function App() {
@@ -28,6 +31,7 @@ function App() {
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/Recipes" element={< Recipes/>} />
           <Route path="/Createrecipe" element={< Createrecipe/>} />
+          <Route path="/AI" element={<AI/>} />
 
 
 

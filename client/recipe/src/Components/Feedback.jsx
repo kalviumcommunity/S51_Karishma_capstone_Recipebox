@@ -19,8 +19,8 @@ function Feedback() {
     document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
 }
   const signOut=()=>{
-    console.log("Test",getCookie('username'))
-      setCookie('username', "", 0)
+    // console.log("Test",getCookie('username'))
+      // setCookie('username', "", 0)
       setCookie('token', "", 0)
       setCookie("logedin","",0)
       console.log("Test",getCookie('username'))

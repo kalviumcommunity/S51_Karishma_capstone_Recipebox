@@ -39,7 +39,7 @@ const navigate = useNavigate();
       setConfirmPasswordError('Passwords do not match');
       return;
     }
-            axios.post('https://s51-ipl-team.onrender.com/signup',{
+            axios.post('https://s51-karishma-capstone-recipebox.onrender.com/signup',{
                 name:username,
                 password:password
             }).then((response)=>{
