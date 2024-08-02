@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Favorite.css';
 import Ellipse from "../assets/Ellipse 57.svg";
@@ -15,6 +15,8 @@ import { Link } from 'react-router-dom';
 
 function Recipe() {
     const [searchValue, setSearchValue] = useState(null);
+    const navigate = useNavigate()
+    
     
     function getCookie(name) {
         let cookieArray = document.cookie.split('; ');
@@ -48,7 +50,7 @@ function Recipe() {
         axios.delete(`https://s51-karishma-capstone-recipebox.onrender.com/api/deleterecipe/${meal._id}`)
             .then((response) => {
                 console.log(response.data);
-                window.location.reload();
+                navigate("/Home")
             })
             .catch((error) => console.error(error));
     }
